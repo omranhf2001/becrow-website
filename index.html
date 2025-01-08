@@ -191,3 +191,22 @@
         });
     });
 </script>
+function showTransition() {
+    console.log("Transition effect triggered");
+    document.querySelector('.transition-effect').style.display = 'block';
+    setTimeout(() => {
+        document.querySelector('.transition-effect').style.display = 'none';
+    }, 2000);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            showTransition();
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 2000);
+        });
+    });
+});
