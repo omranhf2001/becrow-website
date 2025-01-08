@@ -52,7 +52,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: url('https://source.unsplash.com/1600x900/?film,video') no-repeat center center/cover;
+            background: url('hero-image.jpg') no-repeat center center/cover;
         }
         .hero h1 {
             font-size: 50px;
@@ -78,3 +78,104 @@
             background: pink;
             color: black;
             padding: 15px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .socials a {
+            margin: 0 10px;
+            color: pink;
+            font-size: 24px;
+        }
+        .transition-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('transition-image.gif') no-repeat center center/cover;
+            z-index: 9999;
+            display: none;
+        }
+        footer {
+            background: black;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-container {
+            background: rgba(255, 105, 180, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function showTransition() {
+            document.querySelector('.transition-effect').style.display = 'block';
+            setTimeout(() => {
+                document.querySelector('.transition-effect').style.display = 'none';
+            }, 2000);
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    showTransition();
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="transition-effect"></div>
+    <header>
+        <img src="logo.gif" alt="Crow Creative Logo" class="logo">
+        <h1>CROW CREATIVE - Video Production & Commercial Media</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <p>Check out some of our previous projects:</p>
+        <video controls>
+            <source src="project1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <img src="project2.jpg" alt="Portfolio Sample 1">
+        <p>Project Description: A stunning creative concept.</p>
+        <img src="project3.jpg" alt="Portfolio Sample 2">
+        <p>Project Description: High-quality videography work.</p>
+    </section>
+    
+    <section id="booking" class="form-container">
+        <h2>Book a Service</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required><br>
+            <input type="email" placeholder="Your Email" required><br>
+            <textarea placeholder="Your Message" required></textarea><br>
+            <button type="submit" class="booking">Submit</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>Follow us on social media:</p>
+        <div class="socials">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+        </div>
+    </footer>
+</body>
+</html>
